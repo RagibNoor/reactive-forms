@@ -1,0 +1,14 @@
+<hr>
+<div [formGroup]="parent"  >
+  <div formGroupName="selector" class="row">
+    <select formControlName="product_id" class="form-control col-5">
+      <option value="" >Select Stock</option>
+      <option
+        *ngFor="let product of products "
+        [value]="product.id"
+      >{{product.name}}</option>
+    </select>
+    <app-stock-counter formControlName="quantity"></app-stock-counter>
+    <button class="btn btn-light" (click)="onAdd()"  >Add Stock</button>
+  </div>
+</div>

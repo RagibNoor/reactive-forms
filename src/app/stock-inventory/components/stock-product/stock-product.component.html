@@ -1,0 +1,22 @@
+<hr>
+<div [formGroup]="parent">
+  <div formArrayName="stock">
+    <div *ngFor="let item of stocks; let i = index;" >
+      <div [formGroupName]="i" class="row">
+        <div class="col-3">
+          {{getProduct(item.value.product_id).name}}
+        </div>
+        <div class="col-3">
+          {{getProduct(item.value.product_id).price | currency: 'USD': 'symbol'}}
+        </div>
+        <input type="number" placeholder="Quantity" formControlName="quantity" class="form-control col-3" >
+        <span class="col-3">
+                    <button
+                      (click)="onRemove(item,i)"
+                      class="btn btn-light">Remove Stock</button>
+                  </span>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>
